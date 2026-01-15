@@ -20,7 +20,7 @@ import { initializeContext } from "./vscode-context"
 let globalLockManager: SqliteLockManager | undefined
 
 async function main() {
-	log("\n\n\nStarting cline-core service...\n\n\n")
+	log("\n\n\nStarting uniscientist-core service...\n\n\n")
 	log(`Environment variables: ${JSON.stringify(process.env)}`)
 
 	// Parse command line arguments
@@ -272,14 +272,14 @@ function parseArgs(): CliArgs {
 
 function showHelp() {
 	console.log(`
-Cline Core - Standalone Server
+UniScientist Core - Standalone Server
 
 Usage: node cline-core.js [options]
 
 Options:
   -p, --port <port>              Port for the main gRPC service (default: ${PROTOBUS_PORT})
   --host-bridge-port <port>      Port for the host bridge service (default: ${HOSTBRIDGE_PORT})
-  -c, --config <path>            Directory for Cline data storage (default: ~/.cline)
+  -c, --config <path>            Directory for UniScientist data storage (default: ~/.uniscientist)
   -h, --help                     Show this help message
 
 Environment Variables:

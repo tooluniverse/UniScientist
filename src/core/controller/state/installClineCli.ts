@@ -11,7 +11,7 @@ import { Controller } from ".."
  * @returns Empty response
  */
 export async function installClineCli(_controller: Controller, _request: EmptyRequest): Promise<Empty> {
-	const installCommand = "npm install -g cline"
+	const installCommand = "npm install -g uniscientist"
 
 	try {
 		// Use the HostProvider to execute the command in a terminal

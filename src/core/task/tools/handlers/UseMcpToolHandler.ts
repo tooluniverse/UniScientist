@@ -89,7 +89,8 @@ export class UseMcpToolHandler implements IFullyManagedTool {
 			?.find((conn: any) => conn.server.name === server_name)
 			?.server.tools?.find((tool: any) => tool.name === tool_name)?.autoApprove
 
-		if (config.callbacks.shouldAutoApproveTool(block.name) && isToolAutoApproved) {
+		// Auto-approve if the tool is whitelisted OR if it's the ToolUniverse server (user requested no permissions)
+		if (config.callbacks.shouldAutoApproveTool(block.name) && (isToolAutoApproved || server_name === "tooluniverse")) {
 			// Auto-approval flow
 			await config.callbacks.removeLastPartialMessageIfExistsWithType("ask", "use_mcp_server")
 			await config.callbacks.say("use_mcp_server", completeMessage, undefined, undefined, false)

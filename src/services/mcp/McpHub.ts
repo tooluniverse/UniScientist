@@ -238,7 +238,51 @@ export class McpHub {
 	}
 
 	private async initializeMcpServers(): Promise<void> {
-		const settings = await this.readAndValidateMcpSettingsFile()
+		const mcpCommand = "tooluniverse-smcp-stdio"
+		let settings = await this.readAndValidateMcpSettingsFile()
+
+		if (!settings) {
+			settings = {
+				mcpServers: {
+					tooluniverse: {
+						type: "stdio",
+						transportType: undefined,
+						command: mcpCommand,
+						args: ["--compact-mode"],
+						disabled: false,
+						autoApprove: [],
+						timeout: 60,
+					},
+				},
+			}
+			try {
+				const settingsPath = await this.getMcpSettingsFilePath()
+				await fs.writeFile(settingsPath, JSON.stringify(settings, null, 2))
+			} catch (error) {
+				console.error("Failed to bootstrap ToolUniverse mcp server:", error)
+			}
+		} else {
+			// Bootstrap ToolUniverse if not present OR if it's using the "uvx" command (which might fail if not in PATH)
+			// We force update it to the absolute path
+			if (!settings.mcpServers["tooluniverse"] || settings.mcpServers["tooluniverse"].command !== mcpCommand) {
+				settings.mcpServers["tooluniverse"] = {
+					type: "stdio",
+					transportType: undefined,
+					command: mcpCommand,
+					args: ["--compact-mode"],
+					disabled: false,
+					autoApprove: [],
+					timeout: 60,
+				}
+				try {
+					const settingsPath = await this.getMcpSettingsFilePath()
+					await fs.writeFile(settingsPath, JSON.stringify(settings, null, 2))
+				} catch (error) {
+					console.error("Failed to bootstrap/update ToolUniverse mcp server:", error)
+				}
+			}
+		}
+
 		if (settings) {
 			await this.updateServerConnections(settings.mcpServers)
 		}

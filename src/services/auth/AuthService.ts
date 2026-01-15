@@ -4,9 +4,7 @@ import { ClineEnv } from "@/config"
 import { Controller } from "@/core/controller"
 import { getRequestRegistry, type StreamingResponseHandler } from "@/core/controller/grpc-handler"
 import { setWelcomeViewCompleted } from "@/core/controller/state/setWelcomeViewCompleted"
-import { HostProvider } from "@/hosts/host-provider"
 import { telemetryService } from "@/services/telemetry"
-import { openExternal } from "@/utils/env"
 import { AuthInvalidTokenError, AuthNetworkError } from "../error/ClineError"
 import { featureFlagsService } from "../feature-flags"
 import { Logger } from "../logging/Logger"
@@ -255,15 +253,16 @@ export class AuthService {
 			return String.create({ value: "Already authenticated" })
 		}
 
-		const callbackHost = await HostProvider.get().getCallbackUrl()
-		const callbackUrl = `${callbackHost}/auth`
+		// const callbackHost = await HostProvider.get().getCallbackUrl()
+		// const callbackUrl = `${callbackHost}/auth`
 
-		const authUrl = await this._provider.getAuthRequest(callbackUrl)
-		const authUrlString = authUrl.toString()
+		// const authUrl = await this._provider.getAuthRequest(callbackUrl)
+		// const authUrlString = authUrl.toString()
 
-		await openExternal(authUrlString)
-		telemetryService.captureAuthStarted(this._provider.name)
-		return String.create({ value: authUrlString })
+		// await openExternal(authUrlString)
+		// telemetryService.captureAuthStarted(this._provider.name)
+		// return String.create({ value: authUrlString })
+		return String.create({ value: "Authentication is handled via CLI: uniscientist auth" })
 	}
 
 	async handleDeauth(reason: LogoutReason = LogoutReason.UNKNOWN): Promise<void> {

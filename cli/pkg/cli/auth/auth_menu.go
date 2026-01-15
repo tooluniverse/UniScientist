@@ -177,10 +177,9 @@ func ShowAuthMenuWithStatus(isClineAuthenticated bool, hasOrganizations bool, cu
 			huh.NewOption("Exit authorization wizard", AuthActionExit),
 		)
 	} else {
-		options = []huh.Option[AuthAction]{
+			huh.NewOption("Configure BYO API providers", AuthActionBYOSetup),
 			huh.NewOption("Authenticate with Cline account", AuthActionClineLogin),
 			huh.NewOption("Select active provider (Cline or BYO)", AuthActionSelectProvider),
-			huh.NewOption("Configure BYO API providers", AuthActionBYOSetup),
 			huh.NewOption("Exit authorization wizard", AuthActionExit),
 		}
 	}

@@ -110,7 +110,7 @@ export async function getDocumentsPath(): Promise<string> {
  * This is intended to eventually replace ~/Documents/Cline as the global config location.
  */
 export function getClineHomePath(): string {
-	return path.join(os.homedir(), ".cline")
+	return path.join(os.homedir(), ".uniscientist")
 }
 
 export async function ensureTaskDirectoryExists(taskId: string): Promise<string> {

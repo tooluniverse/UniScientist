@@ -124,10 +124,10 @@ export const BANNER_DATA: BannerCardData[] = [
 	{
 		id: "cli-install-unix-v1",
 		icon: "terminal",
-		title: "CLI & Subagents Available",
+		title: "UniScientist CLI & Subagents",
 		platforms: ["mac", "linux"] satisfies BannerCardData["platforms"],
 		description:
-			"Use Cline in your terminal and enable subagent capabilities. [Learn more](https://docs.cline.bot/cline-cli/overview)",
+			"Use UniScientist in your terminal and enable subagent capabilities. [Learn more](https://github.com/tooluniverse/UniScientist)",
 		actions: [
 			{
 				title: "Install",
@@ -144,9 +144,9 @@ export const BANNER_DATA: BannerCardData[] = [
 	{
 		id: "cli-info-windows-v1",
 		icon: "terminal",
-		title: "Cline CLI Info",
+		title: "UniScientist CLI Info",
 		platforms: ["windows"] satisfies BannerCardData["platforms"],
 		description:
-			"Available for macOS and Linux. Coming soon to other platforms. [Learn more](https://docs.cline.bot/cline-cli/overview)",
+			"Available for macOS and Linux. Coming soon to other platforms. [Learn more](https://github.com/tooluniverse/UniScientist)",
 	},
 ]

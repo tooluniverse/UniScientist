@@ -93,10 +93,10 @@ export async function activate(context: vscode.ExtensionContext) {
 	// Initialize test mode and add disposables to context
 	context.subscriptions.push(...testModeWatchers)
 
-	vscode.commands.executeCommand("setContext", "cline.isDevMode", IS_DEV && IS_DEV === "true")
+	vscode.commands.executeCommand("setContext", "uniscientist.isDevMode", IS_DEV && IS_DEV === "true")
 
 	context.subscriptions.push(
-		vscode.window.registerWebviewViewProvider(VscodeWebviewProvider.SIDEBAR_ID, webview, {
+		vscode.window.registerWebviewViewProvider("uniscientist.SidebarProvider", webview, {
 			webviewOptions: { retainContextWhenHidden: true },
 		}),
 	)

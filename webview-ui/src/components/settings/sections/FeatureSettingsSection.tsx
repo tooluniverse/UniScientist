@@ -100,7 +100,7 @@ const FeatureSettingsSection = ({ renderSectionHeader }: FeatureSettingsSectionP
 										className="codicon codicon-warning mr-1"
 										style={{ fontSize: "12px", marginTop: "1px", flexShrink: 0 }}></span>
 									<span>
-										Cline for CLI is required for subagents. Install it with:
+										UniScientist CLI is required for subagents. Install it with:
 										<code
 											className="ml-1 px-1 rounded"
 											style={{
@@ -108,7 +108,7 @@ const FeatureSettingsSection = ({ renderSectionHeader }: FeatureSettingsSectionP
 												color: "var(--vscode-foreground)",
 												opacity: 0.9,
 											}}>
-											npm install -g cline
+											npm install -g uniscientist
 										</code>
 										, then run
 										<code
@@ -118,9 +118,9 @@ const FeatureSettingsSection = ({ renderSectionHeader }: FeatureSettingsSectionP
 												color: "var(--vscode-foreground)",
 												opacity: 0.9,
 											}}>
-											cline auth
+											uniscientist auth
 										</code>
-										To authenticate with Cline or configure an API provider.
+										To authenticate with UniScientist or configure an API provider.
 									</span>
 								</p>
 								{!isClineCliInstalled && (

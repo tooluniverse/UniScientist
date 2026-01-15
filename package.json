@@ -1,22 +1,22 @@
 {
-	"name": "claude-dev",
-	"displayName": "Cline",
-	"description": "Autonomous coding agent right in your IDE, capable of creating/editing files, running commands, using the browser, and more with your permission every step of the way.",
-	"version": "3.51.0",
+	"name": "uniscientist",
+	"displayName": "UniScientist",
+	"description": "AI Biomedical Scientist powered by ToolUniverse. An expert agent for life sciences discovery and analysis.",
+	"version": "3.49.3",
 	"icon": "assets/icons/icon.png",
 	"engines": {
 		"vscode": "^1.84.0"
 	},
 	"author": {
-		"name": "Cline Bot Inc."
+		"name": "UniScientist Team"
 	},
 	"license": "Apache-2.0",
-	"publisher": "saoudrizwan",
+	"publisher": "mims-harvard",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/cline/cline"
+		"url": "https://github.com/tooluniverse/UniScientist"
 	},
-	"homepage": "https://cline.bot",
+	"homepage": "https://uniscientist.bot",
 	"categories": [
 		"AI",
 		"Chat",
@@ -110,117 +110,117 @@
 		"viewsContainers": {
 			"activitybar": [
 				{
-					"id": "claude-dev-ActivityBar",
-					"title": "Cline",
-					"icon": "assets/icons/icon.svg"
+					"id": "uniscientist-ActivityBar",
+					"title": "UniScientist",
+					"icon": "assets/icons/icon.png"
 				}
 			]
 		},
 		"views": {
-			"claude-dev-ActivityBar": [
+			"uniscientist-ActivityBar": [
 				{
 					"type": "webview",
-					"id": "claude-dev.SidebarProvider",
+					"id": "uniscientist.SidebarProvider",
 					"name": "",
-					"icon": "assets/icons/icon.svg"
+					"icon": "assets/icons/icon.png"
 				}
 			]
 		},
 		"commands": [
 			{
-				"command": "cline.plusButtonClicked",
+				"command": "uniscientist.plusButtonClicked",
 				"title": "New Task",
 				"icon": "$(add)"
 			},
 			{
-				"command": "cline.mcpButtonClicked",
+				"command": "uniscientist.mcpButtonClicked",
 				"title": "MCP Servers",
 				"icon": "$(server)"
 			},
 			{
-				"command": "cline.historyButtonClicked",
+				"command": "uniscientist.historyButtonClicked",
 				"title": "History",
 				"icon": "$(history)"
 			},
 			{
-				"command": "cline.accountButtonClicked",
+				"command": "uniscientist.accountButtonClicked",
 				"title": "Account",
 				"icon": "$(account)"
 			},
 			{
-				"command": "cline.settingsButtonClicked",
+				"command": "uniscientist.settingsButtonClicked",
 				"title": "Settings",
 				"icon": "$(settings-gear)"
 			},
 			{
-				"command": "cline.dev.createTestTasks",
+				"command": "uniscientist.dev.createTestTasks",
 				"title": "Create Test Tasks",
-				"category": "Cline",
-				"when": "cline.isDevMode"
+				"category": "UniScientist",
+				"when": "uniscientist.isDevMode"
 			},
 			{
-				"command": "cline.dev.expireMcpOAuthTokens",
+				"command": "uniscientist.dev.expireMcpOAuthTokens",
 				"title": "Expire MCP OAuth Tokens (for testing)",
-				"category": "Cline",
-				"when": "cline.isDevMode"
+				"category": "UniScientist",
+				"when": "uniscientist.isDevMode"
 			},
 			{
-				"command": "cline.addToChat",
-				"title": "Add to Cline",
-				"category": "Cline"
+				"command": "uniscientist.addToChat",
+				"title": "Add to UniScientist",
+				"category": "UniScientist"
 			},
 			{
-				"command": "cline.addTerminalOutputToChat",
-				"title": "Add to Cline",
-				"category": "Cline"
+				"command": "uniscientist.addTerminalOutputToChat",
+				"title": "Add to UniScientist",
+				"category": "UniScientist"
 			},
 			{
-				"command": "cline.focusChatInput",
+				"command": "uniscientist.focusChatInput",
 				"title": "Jump to Chat Input",
-				"category": "Cline"
+				"category": "UniScientist"
 			},
 			{
-				"command": "cline.generateGitCommitMessage",
-				"title": "Generate Commit Message with Cline",
-				"category": "Cline",
+				"command": "uniscientist.generateGitCommitMessage",
+				"title": "Generate Commit Message with UniScientist",
+				"category": "UniScientist",
 				"icon": "$(cline-icon)"
 			},
 			{
-				"command": "cline.abortGitCommitMessage",
-				"title": "Generate Commit Message with Cline - Stop",
-				"category": "Cline",
+				"command": "uniscientist.abortGitCommitMessage",
+				"title": "Generate Commit Message with UniScientist - Stop",
+				"category": "UniScientist",
 				"icon": "$(debug-stop)"
 			},
 			{
-				"command": "cline.explainCode",
-				"title": "Explain with Cline",
-				"category": "Cline"
+				"command": "uniscientist.explainCode",
+				"title": "Explain with UniScientist",
+				"category": "UniScientist"
 			},
 			{
-				"command": "cline.improveCode",
-				"title": "Improve with Cline",
-				"category": "Cline"
+				"command": "uniscientist.improveCode",
+				"title": "Improve with UniScientist",
+				"category": "UniScientist"
 			},
 			{
-				"command": "cline.openWalkthrough",
+				"command": "uniscientist.openWalkthrough",
 				"title": "Open Walkthrough",
-				"category": "Cline"
+				"category": "UniScientist"
 			},
 			{
-				"command": "cline.reconstructTaskHistory",
+				"command": "uniscientist.reconstructTaskHistory",
 				"title": "Reconstruct Task History",
-				"category": "Cline"
+				"category": "UniScientist"
 			},
 			{
-				"command": "cline.reviewComment.reply",
+				"command": "uniscientist.reviewComment.reply",
 				"title": "Reply",
-				"category": "Cline",
+				"category": "UniScientist",
 				"enablement": "!commentIsEmpty"
 			},
 			{
-				"command": "cline.reviewComment.addToChat",
-				"title": "Add to Cline Chat",
-				"category": "Cline",
+				"command": "uniscientist.reviewComment.addToChat",
+				"title": "Add to UniScientist Chat",
+				"category": "UniScientist",
 				"icon": "$(link-external)"
 			}
 		],
@@ -231,7 +231,7 @@
 				"when": "commentEditorFocused && commentController == cline-ai-review && !commentIsEmpty"
 			},
 			{
-				"command": "cline.addToChat",
+				"command": "uniscientist.addToChat",
 				"key": "cmd+'",
 				"mac": "cmd+'",
 				"win": "ctrl+'",
@@ -239,11 +239,11 @@
 				"when": "editorHasSelection"
 			},
 			{
-				"command": "cline.generateGitCommitMessage",
+				"command": "uniscientist.generateGitCommitMessage",
 				"when": "config.git.enabled && scmProvider == git"
 			},
 			{
-				"command": "cline.focusChatInput",
+				"command": "uniscientist.focusChatInput",
 				"key": "cmd+'",
 				"mac": "cmd+'",
 				"win": "ctrl+'",
@@ -254,80 +254,80 @@
 		"menus": {
 			"view/title": [
 				{
-					"command": "cline.plusButtonClicked",
+					"command": "uniscientist.plusButtonClicked",
 					"group": "navigation@1",
-					"when": "view == claude-dev.SidebarProvider"
+					"when": "view == uniscientist.SidebarProvider"
 				},
 				{
-					"command": "cline.mcpButtonClicked",
+					"command": "uniscientist.mcpButtonClicked",
 					"group": "navigation@2",
-					"when": "view == claude-dev.SidebarProvider"
+					"when": "view == uniscientist.SidebarProvider"
 				},
 				{
-					"command": "cline.historyButtonClicked",
+					"command": "uniscientist.historyButtonClicked",
 					"group": "navigation@3",
-					"when": "view == claude-dev.SidebarProvider"
+					"when": "view == uniscientist.SidebarProvider"
 				},
 				{
-					"command": "cline.accountButtonClicked",
+					"command": "uniscientist.accountButtonClicked",
 					"group": "navigation@5",
-					"when": "view == claude-dev.SidebarProvider"
+					"when": "view == uniscientist.SidebarProvider"
 				},
 				{
-					"command": "cline.settingsButtonClicked",
+					"command": "uniscientist.settingsButtonClicked",
 					"group": "navigation@6",
-					"when": "view == claude-dev.SidebarProvider"
+					"when": "view == uniscientist.SidebarProvider"
 				}
 			],
 			"editor/context": [
 				{
-					"command": "cline.addToChat",
+					"command": "uniscientist.addToChat",
 					"group": "navigation",
 					"when": "editorHasSelection"
 				}
 			],
 			"terminal/context": [
 				{
-					"command": "cline.addTerminalOutputToChat",
+					"command": "uniscientist.addTerminalOutputToChat",
 					"group": "navigation"
 				}
 			],
 			"scm/title": [
 				{
-					"command": "cline.generateGitCommitMessage",
+					"command": "uniscientist.generateGitCommitMessage",
 					"group": "navigation",
-					"when": "config.git.enabled && scmProvider == git && !cline.isGeneratingCommit"
+					"when": "config.git.enabled && scmProvider == git && !uniscientist.isGeneratingCommit"
 				},
 				{
-					"command": "cline.abortGitCommitMessage",
+					"command": "uniscientist.abortGitCommitMessage",
 					"group": "navigation",
-					"when": "config.git.enabled && scmProvider == git && cline.isGeneratingCommit"
+					"when": "config.git.enabled && scmProvider == git && uniscientist.isGeneratingCommit"
 				}
 			],
 			"commandPalette": [
 				{
-					"command": "cline.generateGitCommitMessage",
-					"when": "config.git.enabled && !cline.isGeneratingCommit"
+					"command": "uniscientist.generateGitCommitMessage",
+					"when": "config.git.enabled && !uniscientist.isGeneratingCommit"
 				},
 				{
-					"command": "cline.abortGitCommitMessage",
-					"when": "config.git.enabled && cline.isGeneratingCommit"
+					"command": "uniscientist.abortGitCommitMessage",
+					"when": "config.git.enabled && uniscientist.isGeneratingCommit"
 				},
 				{
-					"command": "cline.reviewComment.reply",
+					"command": "uniscientist.reviewComment.reply",
 					"when": "false"
 				}
 			],
 			"comments/commentThread/context": [
 				{
-					"command": "cline.reviewComment.reply",
+					"command": "uniscientist.reviewComment.reply",
 					"group": "inline",
 					"when": "commentController == cline-ai-review"
 				}
 			],
 			"comments/commentThread/title": [
 				{
-					"command": "cline.reviewComment.addToChat",
+					"command": "uniscientist.reviewComment.addToChat",
 					"group": "inline",
 					"when": "commentController == cline-ai-review"
 				}
@@ -339,13 +339,12 @@
 		}
 	},
 	"scripts": {
-		"vscode:prepublish": "npm run package",
 		"compile": "npm run check-types && npm run lint && node esbuild.mjs",
 		"compile-standalone": "npm run check-types && npm run lint && node esbuild.mjs --standalone",
 		"compile-standalone-npm": "npm run protos && npm run protos-go && npm run check-types && npm run lint && node esbuild.mjs --standalone",
 		"compile-cli": "scripts/build-cli.sh",
 		"compile-cli-all-platforms": "scripts/build-cli-all-platforms.sh",
-		"compile-cli-man-page": "pandoc cli/man/cline.1.md -s -t man -o cli/man/cline.1",
+		"compile-cli-man-page": "pandoc cli/man/uniscientist.1.md -s -t man -o cli/man/uniscientist.1",
 		"test:install": "bash scripts/test-install.sh",
 		"dev:cli:watch": "node scripts/dev-cli-watch.mjs",
 		"postcompile-standalone": "node scripts/package-standalone.mjs",
@@ -375,8 +374,8 @@
 		"ci:check-all": "npm-run-all -p check-types lint format",
 		"ci:build": "npm run protos && npm run build:webview && node esbuild.mjs && npm run compile-tests",
 		"pretest": "npm run compile && npm run compile-tests && npm run compile-standalone && npm run lint",
-		"test": "npm-run-all test:unit test:integration",
-		"test:integration": "vscode-test",
+		"vscode:prepublish": "npm run package",
+		"test": "vscode-test",
 		"test:unit": "cross-env TS_NODE_PROJECT=./tsconfig.unit-test.json mocha",
 		"test:coverage": "vscode-test --coverage",
 		"test:sca-server": "npx tsx watch scripts/test-standalone-core-api-server.ts",
@@ -403,10 +402,6 @@
 		"storybook": "cd webview-ui && npm run storybook"
 	},
 	"lint-staged": {
-		"src/shared/storage/state-keys.ts": [
-			"node scripts/generate-state-proto.mjs",
-			"git add proto/cline/state.proto"
-		],
 		"*": [
 			"biome check --write --staged --no-errors-on-unmatched --files-ignore-unknown=true"
 		]
@@ -532,7 +527,6 @@
 		"p-timeout": "^6.1.4",
 		"p-wait-for": "^5.0.2",
 		"pdf-parse": "^1.1.1",
-		"picomatch": "^4.0.3",
 		"posthog-node": "^5.8.0",
 		"puppeteer-chromium-resolver": "^23.0.0",
 		"puppeteer-core": "^23.4.0",

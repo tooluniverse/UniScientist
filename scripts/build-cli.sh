@@ -3,6 +3,7 @@ set -eu
 
 npm run protos
 npm run protos-go
+node esbuild.mjs --standalone --production
 
 mkdir -p dist-standalone/extension
 cp package.json dist-standalone/extension
@@ -43,8 +44,8 @@ esac
 # Build for current platform only
 echo "Building for current platform ($OS-$ARCH)..."
 
-GO111MODULE=on go build -ldflags "$LDFLAGS" -o bin/cline ./cmd/cline
-echo "  ✓ bin/cline built"
+GO111MODULE=on go build -ldflags "$LDFLAGS" -o bin/uniscientist ./cmd/uniscientist
+echo "  ✓ bin/uniscientist built"
 
 GO111MODULE=on go build -ldflags "$LDFLAGS" -o bin/cline-host ./cmd/cline-host
 echo "  ✓ bin/cline-host built"
@@ -55,8 +56,9 @@ echo "Build complete for current platform!"
 # Copy binaries to dist-standalone/bin with platform-specific names AND generic names
 cd ..
 mkdir -p dist-standalone/bin
-cp cli/bin/cline dist-standalone/bin/cline
-cp cli/bin/cline dist-standalone/bin/cline-${OS}-${ARCH}
+cp cli/bin/uniscientist dist-standalone/bin/uniscientist
+cp cli/bin/uniscientist dist-standalone/bin/uni
+cp cli/bin/uniscientist dist-standalone/bin/uniscientist-${OS}-${ARCH}
 cp cli/bin/cline-host dist-standalone/bin/cline-host
 cp cli/bin/cline-host dist-standalone/bin/cline-host-${OS}-${ARCH}
-echo "Copied binaries to dist-standalone/bin/ (both generic and platform-specific names)"
+echo "Copied binaries to dist-standalone/bin/ (uniscientist, uni, and platform variants)"

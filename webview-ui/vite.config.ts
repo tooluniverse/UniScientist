@@ -81,6 +81,8 @@ export default defineConfig({
 		minify: !isDevBuild,
 		// Enable inline source maps for dev build
 		sourcemap: isDevBuild ? "inline" : false,
+		// Inline assets smaller than 500kb to avoid VS Code webview path issues
+		assetsInlineLimit: 500000,
 		rollupOptions: {
 			output: {
 				inlineDynamicImports: true,

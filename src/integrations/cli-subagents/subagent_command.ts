@@ -2,12 +2,12 @@
  * Pattern to match simplified Cline CLI syntax: cline "prompt" or cline 'prompt'
  * with optional additional flags after the closing quote
  */
-const CLINE_COMMAND_PATTERN = /^cline\s+(['"])(.+?)\1(\s+.*)?$/
+const CLINE_COMMAND_PATTERN = /^uniscientist\s+(['"])(.+?)\1(\s+.*)?$/
 
 /**
  * Detects if a command is a Cline CLI subagent command.
  *
- * Matches the simplified syntax: cline "prompt" or cline 'prompt'
+ * Matches the simplified syntax: uniscientist "prompt" or uniscientist 'prompt'
  * This allows the system to apply subagent-specific settings like autonomous execution.
  *
  * @param command - The command string to check
@@ -15,19 +15,19 @@ const CLINE_COMMAND_PATTERN = /^cline\s+(['"])(.+?)\1(\s+.*)?$/
  */
 export function isSubagentCommand(command: string): boolean {
 	// Match simplified syntaxes
-	// cline "prompt"
-	// cline 'prompt'
+	// uniscientist "prompt"
+	// uniscientist 'prompt'
 	return CLINE_COMMAND_PATTERN.test(command)
 }
 
 /**
  * Transforms simplified Cline CLI command syntax with subagent settings.
  *
- * Converts: cline "prompt" or cline 'prompt'
- * To: cline "prompt" -s yolo_mode_toggled=true -s max_consecutive_mistakes=6 -F plain -y --oneshot
+ * Converts: uniscientist "prompt" or uniscientist 'prompt'
+ * To: uniscientist "prompt" -s yolo_mode_toggled=true -s max_consecutive_mistakes=6 -F plain -y --oneshot
  *
  * Preserves additional flags like --workdir:
- * cline "prompt" --workdir ./path → cline "prompt" -s ... -F plain -y --oneshot --workdir ./path
+ * uniscientist "prompt" --workdir ./path → uniscientist "prompt" -s ... -F plain -y --oneshot --workdir ./path
  *
  * This enables autonomous subagent execution with proper CLI flags for automation.
  *
@@ -52,7 +52,7 @@ export function transformClineCommand(command: string): string {
  * @returns The command with injected flags and settings
  */
 function injectSubagentSettings(command: string): string {
-	// No pre-prompt flags needed - use standard "cline 'prompt'" syntax
+	// No pre-prompt flags needed - use standard "uniscientist 'prompt'" syntax
 	const prePromptFlags: string[] = []
 
 	// Flags/settings to insert after the prompt
@@ -65,7 +65,7 @@ function injectSubagentSettings(command: string): string {
 		const prompt = match[2]
 		const additionalFlags = match[3] || ""
 		const prePromptPart = prePromptFlags.length > 0 ? prePromptFlags.join(" ") + " " : ""
-		return `cline ${prePromptPart}${quote}${prompt}${quote} ${postPromptFlags.join(" ")}${additionalFlags}`
+		return `uniscientist ${prePromptPart}${quote}${prompt}${quote} ${postPromptFlags.join(" ")}${additionalFlags}`
 	}
 
 	// Already full format: just inject settings after prompt
