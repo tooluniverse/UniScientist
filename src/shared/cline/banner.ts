@@ -82,43 +82,43 @@ export interface BannerAction {
  */
 export const BANNER_DATA: BannerCardData[] = [
 	// Info banner with inline link
-	{
-		id: "info-banner-v1",
-		icon: "lightbulb",
-		title: "Use Cline in Right Sidebar",
-		description:
-			"For the best experience, drag the Cline icon to your right sidebar. This keeps your file explorer and editor visible while you chat with Cline, making it easier to navigate your codebase and see changes in real-time. [See how →](https://docs.cline.bot/features/customization/opening-cline-in-sidebar)",
-	},
+	// {
+	// 	id: "info-banner-v1",
+	// 	icon: "lightbulb",
+	// 	title: "Use UniScientist in Right Sidebar",
+	// 	description:
+	// 		"For the best experience, drag the UniScientist icon to your right sidebar. This keeps your file explorer and editor visible while you chat with UniScientist, making it easier to navigate your codebase and see changes in real-time. [See how →](https://docs.cline.bot/features/customization/opening-cline-in-sidebar)",
+	// },
 
 	// Announcement with conditional actions based on user auth state
-	{
-		id: "new-model-opus-4-5-cline-users",
-		icon: "megaphone",
-		title: "Claude Opus 4.5 Now Available",
-		description: "State-of-the-art performance at 3x lower cost than Opus 4.1. Available now in the Cline provider.",
-		actions: [
-			{
-				title: "Try Now",
-				action: BannerActionType.SetModel,
-				arg: "anthropic/claude-opus-4.5",
-			},
-		],
-		isClineUserOnly: true, // Only Cline users see this
-	},
+	// {
+	// 	id: "new-model-opus-4-5-cline-users",
+	// 	icon: "megaphone",
+	// 	title: "Claude Opus 4.5 Now Available",
+	// 	description: "State-of-the-art performance at 3x lower cost than Opus 4.1. Available now in the Cline provider.",
+	// 	actions: [
+	// 		{
+	// 			title: "Try Now",
+	// 			action: BannerActionType.SetModel,
+	// 			arg: "anthropic/claude-opus-4.5",
+	// 		},
+	// 	],
+	// 	isClineUserOnly: true, // Only Cline users see this
+	// },
 
-	{
-		id: "new-model-opus-4-5-non-cline-users",
-		icon: "megaphone",
-		title: "Claude Opus 4.5 Now Available",
-		description: "State-of-the-art performance at 3x lower cost than Opus 4.1. Available now in the Cline provider.",
-		actions: [
-			{
-				title: "Get Started",
-				action: BannerActionType.ShowAccount,
-			},
-		],
-		isClineUserOnly: false, // Only non-Cline users see this
-	},
+	// {
+	// 	id: "new-model-opus-4-5-non-cline-users",
+	// 	icon: "megaphone",
+	// 	title: "Claude Opus 4.5 Now Available",
+	// 	description: "State-of-the-art performance at 3x lower cost than Opus 4.1. Available now in the Cline provider.",
+	// 	actions: [
+	// 		{
+	// 			title: "Get Started",
+	// 			action: BannerActionType.ShowAccount,
+	// 		},
+	// 	],
+	// 	isClineUserOnly: false, // Only non-Cline users see this
+	// },
 
 	// Platform-specific banner (macOS/Linux)
 	{
@@ -126,8 +126,7 @@ export const BANNER_DATA: BannerCardData[] = [
 		icon: "terminal",
 		title: "UniScientist CLI & Subagents",
 		platforms: ["mac", "linux"] satisfies BannerCardData["platforms"],
-		description:
-			"Use UniScientist in your terminal and enable subagent capabilities. [Learn more](https://github.com/tooluniverse/UniScientist)",
+		description: "Use UniScientist in your terminal and enable subagent capabilities.",
 		actions: [
 			{
 				title: "Install",
@@ -146,7 +145,6 @@ export const BANNER_DATA: BannerCardData[] = [
 		icon: "terminal",
 		title: "UniScientist CLI Info",
 		platforms: ["windows"] satisfies BannerCardData["platforms"],
-		description:
-			"Available for macOS and Linux. Coming soon to other platforms. [Learn more](https://github.com/tooluniverse/UniScientist)",
+		description: "Available for macOS and Linux. Coming soon to other platforms.",
 	},
 ]

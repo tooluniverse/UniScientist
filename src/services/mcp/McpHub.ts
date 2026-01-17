@@ -238,7 +238,6 @@ export class McpHub {
 	}
 
 	private async initializeMcpServers(): Promise<void> {
-		const mcpCommand = "tooluniverse-smcp-stdio"
 		let settings = await this.readAndValidateMcpSettingsFile()
 
 		if (!settings) {
@@ -247,8 +246,8 @@ export class McpHub {
 					tooluniverse: {
 						type: "stdio",
 						transportType: undefined,
-						command: mcpCommand,
-						args: ["--compact-mode"],
+						command: "uvx",
+						args: ["--from", "tooluniverse", "tooluniverse-smcp-stdio", "--compact-mode"],
 						disabled: false,
 						autoApprove: [],
 						timeout: 60,
@@ -264,12 +263,13 @@ export class McpHub {
 		} else {
 			// Bootstrap ToolUniverse if not present OR if it's using the "uvx" command (which might fail if not in PATH)
 			// We force update it to the absolute path
-			if (!settings.mcpServers["tooluniverse"] || settings.mcpServers["tooluniverse"].command !== mcpCommand) {
+			if (!settings.mcpServers["tooluniverse"] || settings.mcpServers["tooluniverse"].command !== "uvx") {
 				settings.mcpServers["tooluniverse"] = {
 					type: "stdio",
 					transportType: undefined,
-					command: mcpCommand,
-					args: ["--compact-mode"],
+					command: "uvx",
+					args: ["--from", "tooluniverse", "tooluniverse-smcp-stdio", "--compact-mode"],
+
 					disabled: false,
 					autoApprove: [],
 					timeout: 60,
