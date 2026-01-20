@@ -48,6 +48,7 @@ export const config = createVariant(ModelFamily.XS)
 		ClineDefaultTool.PLAN_MODE,
 		ClineDefaultTool.GENERATE_EXPLANATION,
 		ClineDefaultTool.USE_SKILL,
+		ClineDefaultTool.TOOLUNIVERSE,
 	)
 	.placeholders({
 		MODEL_FAMILY: ModelFamily.XS,

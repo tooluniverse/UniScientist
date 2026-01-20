@@ -68,6 +68,13 @@ export class UseMcpToolHandler implements IFullyManagedTool {
 		if (mcp_arguments) {
 			try {
 				parsedArguments = JSON.parse(mcp_arguments)
+
+				// Strip task_progress if present (client-side only param)
+				if (parsedArguments && typeof parsedArguments === "object" && "task_progress" in parsedArguments) {
+					// eslint-disable-next-line @typescript-eslint/no-unused-vars
+					const { task_progress, ...rest } = parsedArguments
+					parsedArguments = rest
+				}
 			} catch (_error) {
 				config.taskState.consecutiveMistakeCount++
 				await config.callbacks.say("error", `Cline tried to use ${tool_name} with an invalid JSON argument. Retrying...`)

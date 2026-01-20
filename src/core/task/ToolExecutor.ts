@@ -39,6 +39,7 @@ import { ReadFileToolHandler } from "./tools/handlers/ReadFileToolHandler"
 import { ReportBugHandler } from "./tools/handlers/ReportBugHandler"
 import { SearchFilesToolHandler } from "./tools/handlers/SearchFilesToolHandler"
 import { SummarizeTaskHandler } from "./tools/handlers/SummarizeTaskHandler"
+import { ToolUniverseToolHandler } from "./tools/handlers/ToolUniverseToolHandler"
 import { UseMcpToolHandler } from "./tools/handlers/UseMcpToolHandler"
 import { UseSkillToolHandler } from "./tools/handlers/UseSkillToolHandler"
 import { WebFetchToolHandler } from "./tools/handlers/WebFetchToolHandler"
@@ -236,6 +237,40 @@ export class ToolExecutor {
 		this.coordinator.register(new ReportBugHandler())
 		this.coordinator.register(new ApplyPatchHandler(validator))
 		this.coordinator.register(new GenerateExplanationToolHandler())
+		// this.coordinator.register(new ToolUniverseToolHandler())
+
+		// Setup dynamic handler for ToolUniverse tools
+		const toolUniverseHandler = new ToolUniverseToolHandler()
+		this.coordinator.setDynamicHandler((toolName) => {
+			const toolUniverseTools = this.mcpHub.getServers().find((server) => {
+				// Check name first
+				if (server.name.toLowerCase().includes("tooluniverse")) {
+					return true
+				}
+				// Check config if name doesn't match
+				try {
+					const config = JSON.parse(server.config)
+					// Check for tooluniverse in args (common pattern for uvx executions)
+					if (config.args && Array.isArray(config.args)) {
+						return config.args.some(
+							(arg: string) => typeof arg === "string" && arg.toLowerCase().includes("tooluniverse"),
+						)
+					}
+					// Check for tooluniverse in command
+					if (typeof config.command === "string" && config.command.toLowerCase().includes("tooluniverse")) {
+						return true
+					}
+				} catch (e) {
+					// Ignore parsing errors
+				}
+				return false
+			})?.tools
+
+			if (toolUniverseTools?.some((t) => t.name === toolName)) {
+				return toolUniverseHandler
+			}
+			return undefined
+		})
 	}
 
 	/**

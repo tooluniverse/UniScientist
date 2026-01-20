@@ -50,7 +50,7 @@ async function getMcpServers(servers: McpServer[], variant: PromptVariant, conte
 
 function formatMcpServersList(servers: McpServer[]): string {
 	return servers
-		.filter((server) => server.status === "connected")
+		.filter((server) => server.status === "connected" && !isToolUniverseServer(server))
 		.map((server) => {
 			const tools = server.tools
 				?.map((tool) => {
@@ -84,4 +84,22 @@ function formatMcpServersList(servers: McpServer[]): string {
 			)
 		})
 		.join("\n\n")
+}
+
+function isToolUniverseServer(server: McpServer): boolean {
+	if (server.name.toLowerCase().includes("tooluniverse")) {
+		return true
+	}
+	try {
+		const config = JSON.parse(server.config)
+		if (config.args && Array.isArray(config.args)) {
+			return config.args.some((arg: string) => typeof arg === "string" && arg.toLowerCase().includes("tooluniverse"))
+		}
+		if (typeof config.command === "string" && config.command.toLowerCase().includes("tooluniverse")) {
+			return true
+		}
+	} catch (_e) {
+		// Ignore parsing errors
+	}
+	return false
 }

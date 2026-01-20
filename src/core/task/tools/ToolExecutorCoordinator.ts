@@ -48,6 +48,7 @@ export class SharedToolHandler implements IFullyManagedTool {
  */
 export class ToolExecutorCoordinator {
 	private handlers = new Map<string, IToolHandler>()
+	private dynamicHandler?: (toolName: string) => IToolHandler | undefined
 
 	/**
 	 * Register a tool handler
@@ -57,10 +58,23 @@ export class ToolExecutorCoordinator {
 	}
 
 	/**
+	 * Register a dynamic handler resolver
+	 */
+	setDynamicHandler(resolver: (toolName: string) => IToolHandler | undefined): void {
+		this.dynamicHandler = resolver
+	}
+
+	/**
 	 * Check if a handler is registered for the given tool
 	 */
 	has(toolName: string): boolean {
-		return this.handlers.has(toolName)
+		if (toolName.includes(CLINE_MCP_TOOL_IDENTIFIER)) {
+			return true
+		}
+		if (this.handlers.has(toolName)) {
+			return true
+		}
+		return !!this.dynamicHandler?.(toolName)
 	}
 
 	/**
@@ -70,15 +84,22 @@ export class ToolExecutorCoordinator {
 		// HACK: Normalize MCP tool names to the standard handler
 		if (toolName.includes(CLINE_MCP_TOOL_IDENTIFIER)) {
 			toolName = ClineDefaultTool.MCP_USE
+			return this.handlers.get(toolName)
 		}
-		return this.handlers.get(toolName)
+
+		const handler = this.handlers.get(toolName)
+		if (handler) {
+			return handler
+		}
+
+		return this.dynamicHandler?.(toolName)
 	}
 
 	/**
 	 * Execute a tool through its registered handler
 	 */
 	async execute(config: TaskConfig, block: ToolUse): Promise<ToolResponse> {
-		const handler = this.handlers.get(block.name)
+		const handler = this.getHandler(block.name)
 		if (!handler) {
 			throw new Error(`No handler registered for tool: ${block.name}`)
 		}
