@@ -210,11 +210,7 @@ export class ClineToolSet {
 			?.filter((server) => !isToolUniverseServer(server))
 			.flatMap((server) => mcpToolToClineToolSpec(variant.family, server))
 
-		const toolUniverseTools = mcpServers
-			?.filter((server) => isToolUniverseServer(server))
-			.flatMap((server) => toolUniverseToolToClineToolSpec(variant.family, server))
-
-		const enabledTools = [...toolConfigs, ...mcpTools, ...toolUniverseTools]
+		const enabledTools = [...toolConfigs, ...mcpTools]
 		const converter = ClineToolSet.getNativeConverter(context.providerInfo.providerId, context.providerInfo.model.id)
 
 		return enabledTools.map((tool) => converter(tool, context))

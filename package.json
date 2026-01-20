@@ -2,13 +2,13 @@
 	"name": "uniscientist",
 	"displayName": "UniScientist",
 	"description": "AI Biomedical Scientist powered by ToolUniverse. An expert agent for life sciences discovery and analysis.",
-	"version": "3.49.3",
+	"version": "3.51.0",
 	"icon": "assets/icons/icon.png",
 	"engines": {
 		"vscode": "^1.84.0"
 	},
 	"author": {
-		"name": "UniScientist Team"
+		"name": "Shanghua Gao"
 	},
 	"license": "Apache-2.0",
 	"publisher": "mims-harvard",
