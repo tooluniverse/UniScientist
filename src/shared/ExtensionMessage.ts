@@ -89,6 +89,7 @@ export interface ExtensionState {
 	yoloModeToggled?: boolean
 	useAutoCondense?: boolean
 	clineWebToolsEnabled?: ClineFeatureSetting
+	worktreesEnabled?: ClineFeatureSetting
 	focusChainSettings: FocusChainSettings
 	dictationSettings: DictationSettings
 	customPrompt?: string
@@ -113,6 +114,7 @@ export interface ExtensionState {
 	backgroundEditEnabled?: boolean
 	optOutOfRemoteConfig?: boolean
 	banners?: BannerCardData[]
+	openAiCodexIsAuthenticated?: boolean
 }
 
 export interface ClineMessage {
